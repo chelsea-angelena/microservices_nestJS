@@ -1,0 +1,34 @@
+services:
+  db:
+    container_name: ${PROJECT_NAME}db
+    image: postgres:latest
+    restart: always
+    env_file: ./docker.env
+    environment:
+      - POSTGRES_HOST=${DB_HOST}
+      - POSTGRES_DATABASE=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PORT=${DB_PORT}
+      - POSTGRES_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    ports:
+      - '54320:5432'
+  server:
+    image: ${PROJECT}server
+    container_name: ${PROJECT}server
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: ./docker.env
+    expose:
+      - "5001"
+    ports:
+      - "5001:5001"
+    volumes:
+      - /app/node_modules
+      - .:/app
+    restart: always
+    networks:
+      - default
+    

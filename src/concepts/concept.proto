@@ -1,0 +1,29 @@
+syntax = "proto3";
+package concept;
+
+service ConceptService {
+  rpc GetAllConcepts (GetAllConceptsParams) returns (ConceptResponse) {}
+  rpc ReturnNewConcept (ReturnNewConceptParams) returns (ReturnNewConceptParams) {}
+  rpc AddConcept (CreateConceptDto) returns (Concept) {}
+}
+
+message GetAllConceptsParams {}
+
+message ReturnNewConceptParams {
+  string results = 2;
+}
+
+message Concept {
+  string results = 2;
+  string base64 = 3;
+}
+
+message CreateConceptDto {
+  string base64 = 1;
+}
+
+message ConceptResponse {
+  string id = 1;
+  repeated Concept data = 2;
+}
+

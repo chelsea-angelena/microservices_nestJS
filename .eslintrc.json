@@ -1,0 +1,55 @@
+{
+	"extends": [
+		"airbnb-typescript/base",
+		"../.eslintrc",
+		"prettier",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"env": {
+		"jest/globals": true,
+		"node": true,
+		"es6": true
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module",
+		"project": "tsconfig.json",
+		"tsconfigRootDir": "server"
+	},
+	"plugins": ["@typescript-eslint"],
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
+	},
+	"rules": {
+		"object-curly-spacing": ["error", "always"],
+		"jsx-quotes": ["error", "prefer-double"],
+		"no-console": "error",
+		"@typescript-eslint/semi": ["error"],
+		"@typescript-eslint/indent": "off",
+		"import/prefer-default-export": "off",
+		"max-classes-per-file": "off",
+		"class-methods-use-this": "off",
+		"no-restricted-syntax": "off",
+		"no-await-in-loop": "off",
+		"no-plusplus": "off",
+		"default-case": "off",
+		"@typescript-eslint/naming-convention": [
+			"error",
+			{
+				"selector": "enum",
+				"format": ["PascalCase", "UPPER_CASE"]
+			}
+		],
+		"no-param-reassign": "off",
+		"@typescript-eslint/no-useless-constructor": "warn",
+		"no-nested-ternary": "off",
+		"prefer-destructuring": "warn",
+		"@typescript-eslint/no-shadow": "warn"
+	}
+}
